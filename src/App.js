@@ -1,54 +1,35 @@
-import React, { Component} from 'react';
-import Rect from './Rect';
+import Rreact, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
+import Memo from './memo/Memo';
+import AddForm from './memo/AddForm';
+import FindForm from './memo/FindForm';
+import DelForm from './memo/DelForm';
 
-let theme = {
-  light: {
-    backgroundColor:"#eef",
-    color:"#006",
-    padding:"10px",
-  },
-  dark: {
-    backgroundColor:"#006",
-    color: "eef",
-    padding: "10px",
-  }
-};
-
-const ThemeContext = React.createContext(theme.dark);
-
+//Appコンポーネント
 class App extends Component {
-  static contextType = ThemeContext;
+  td = {
+    width:"250px"
+  }
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
-      <div style={this.context}>
-        <Title value="Content page" />
-        <Message value="This is Content sample." />
-        <Message value="※これはテーマのサンプルです。" />
+      <div>
+        <h1>Memo</h1>
+        <AddForm />
+        <hr />
+        <table><tbody><tr>
+          <td style={this.td}><FindForm /></td>
+          <td style={this.td}><DelForm /></td>  
+        </tr></tbody></table>
+        <Memo />
       </div>
     );
   }
 }
 
-class Title extends Component {
-  static contextType = ThemeContext;
-
-  render () {
-    return (
-    <h2 style={this.context}>{this.props.value}</h2>
-    );
-  }
-}
-
-class Message extends Component {
-  static contextType = ThemeContext;
-
-  render() {
-    return (
-    <p style={this.context}>{this.props.value}</p>
-    );
-  }
-}
-
-export default App;
+export default connect() (App);
