@@ -17,7 +17,7 @@ class Memo extends Component {
 
             case 'find':
             data = this.props.fdata.map((value) => (
-                <Item key={this.message} value={value} index={n++} />
+                <Item key={value.message} value={value} index={n++} />
             ));
             break;
 

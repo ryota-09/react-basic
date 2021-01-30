@@ -1,7 +1,7 @@
-import { creatStore } from 'redux';
+import { createStore } from 'redux';
 
 const initData =  {
-    data:[{message:'sample data',created:new Data()}],
+    data:[{message:'sample data',created:new Date()}],
     message:'please type message:',
     mode:'default',
     fdata:[]
@@ -29,10 +29,10 @@ export function memoReducer(state = initData, action) {
 function addReduce(state, action) {
     let data = {
         message:action.message,
-        create:new Date()
+        created:new Date()
     };
     let newdata = state.data.slice();
-    newdata = unshift(data);
+    newdata.unshift(data);
     return {
         data:newdata,
         message:'Added!',
